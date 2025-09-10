@@ -1,30 +1,66 @@
-# Port_Scanner.py
+# 🔎 Port Scanner
 
 A fast **multithreaded TCP port scanner** written in Python.  
-This tool can scan a target host for open ports using threading for speed.  
-
-
----
-
-## Features
-- Scan **individual ports** (e.g. `22,80,443`)
-- Scan **port ranges** (e.g. `20-25`)
-- Scan the **default well-known range** (1–1024)
-- Scan **all 65,535 ports**
-- Multithreaded for faster results
-- Automatically detects common service names (e.g. 80 → http)
+It scans a target host (IP address or domain) for **open TCP ports** using a thread pool for high-speed concurrent scanning.
 
 ---
 
-## Requirements
-- Python **3.9+** recommended (uses type hints and `concurrent.futures`)
-
-No external libraries are required. It only uses Python’s standard library.
+## ✨ Features
+- Scan **individual ports** (e.g., `22,80,443`)
+- Scan **port ranges** (e.g., `20-25`)
+- **Full scan** of all 65,535 ports
+- Defaults to scanning **well-known ports** (`1-1024`)
+- Adjustable **thread pool size** for performance tuning
+- Displays detected **services** (where available)
 
 ---
 
-## Usage
+## ⚙️ Installation
+Clone the repository and ensure you have Python 3.9+ installed:
 
-### Basic Scan (well-known ports 1–1024)
 ```bash
-python Port_Scanner.py --host example.com
+git clone https://github.com/yourusername/port-scanner.git
+cd port-scanner
+
+```
+---
+
+## 🚀 Usage
+
+Basic Scan (well-known ports: 1–1024)
+```bash
+python3 Port_Scanner.py --host example.com
+```
+Scan Specific Ports
+```bash
+python3 Port_Scanner.py --host example.com --ports 22,80,443
+```
+Scan a range of ports
+```bash
+python Port_Scanner.py --host example.com --ports 20-25
+```
+Full Scan
+```bash
+python Port_Scanner.py --host example.com --all
+```
+---
+
+## 📖 Example Output 
+
+```bash
+
+Scanning example.com...
+
+Port 22 is OPEN (ssh)
+Port 80 is OPEN (http)
+Port 443 is OPEN (https)
+
+Scan complete.
+
+Summary of open ports:
+  22: ssh
+  80: http
+  443: https
+
+```
+---
